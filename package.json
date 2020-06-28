@@ -1,0 +1,36 @@
+{
+  "name": "typescript-cli-template",
+  "version": "0.1.0",
+  "description": "Template project for creating node CLI programs using Typescript",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "yarn build:clean && yarn build:compile",
+    "build:compile": "tsc",
+    "build:clean": "rimraf ./dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justinneff/typescript-cli-template.git"
+  },
+  "keywords": [
+    "typescript",
+    "cli",
+    "template"
+  ],
+  "author": "Justin Neff <neffjustin@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/justinneff/typescript-cli-template/issues"
+  },
+  "homepage": "https://github.com/justinneff/typescript-cli-template#readme",
+  "devDependencies": {
+    "@types/node": "^14.0.14",
+    "rimraf": "^3.0.2",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "commander": "^5.1.0",
+    "pkginfo": "^0.4.1"
+  }
+}
