@@ -1,5 +1,5 @@
 # typescript-cli-template
-This is intended to be a starter template repo for creating CLI programs with Typescript. The template project uses [commander.js](https://github.com/tj/commander.js) as the library for wiring up the CLI commands and comes with Typescript, ESLint and Prettier preconfigured.
+This is intended to be a starter template repo for creating CLI programs with Typescript. The template project uses [commander.js](https://github.com/tj/commander.js) as the library for wiring up the CLI commands and comes with Typescript, ESLint and Prettier preconfigured. The [ora](https://github.com/sindresorhus/ora) library is also preinstalled for showing spinners.
 
 ## Getting Started
 
