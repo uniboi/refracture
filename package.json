@@ -2,13 +2,16 @@
   "name": "typescript-cli-template",
   "version": "0.1.0",
   "description": "Template project for creating node CLI programs using Typescript",
-  "main": "dist/index.js",
+  "bin": {
+    "test-prog": "./dist/index.js"
+  },
   "scripts": {
-    "build": "yarn build:clean && yarn build:compile",
+    "build": "npm run build:clean && npm run build:compile",
     "build:compile": "tsc",
     "build:clean": "rimraf ./dist",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
