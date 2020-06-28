@@ -1,5 +1,5 @@
-import pkginfo from 'pkginfo';
 import { Command } from 'commander';
+import pkginfo from 'pkginfo';
 
 pkginfo(module, 'name', 'version');
 
