@@ -1,1 +1,1 @@
-declare module 'pkginfo';
+declare module 'pkginfo'
