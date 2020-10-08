@@ -14,7 +14,12 @@ program.command('run').action(() => {
 	const spinner = ora()
 	spinner.start('Loading...')
 	setTimeout(() => {
-		spinner.succeed('All done!')
+		spinner.succeed('Step 1')
+		spinner.start('Loading step 2...')
+
+		setTimeout(() => {
+			spinner.succeed('Step 2')
+		}, 3000)
 	}, 2000)
 })
 
