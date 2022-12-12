@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+import Parser from 'tree-sitter';
+import fs from 'fs';
+const RSQUIRREL = require('tree-sitter-rsquirrel') // node fuckery
+
 import { Command } from 'commander'
 import ora from 'ora'
 import pkginfo from 'pkginfo'
@@ -9,18 +13,32 @@ const program = new Command()
 
 program.version(module.exports.version)
 
-// This is an example showing using an "ora" spinner for a long running command
-program.command('run').action(() => {
-	const spinner = ora()
-	spinner.start('Loading...')
-	setTimeout(() => {
-		spinner.succeed('Step 1')
-		spinner.start('Loading step 2...')
+program.option("-f", "--file <file>", "filepath to parse")
+program.option("-d", "--dir <directory>", "directory to parse all contents of")
 
-		setTimeout(() => {
-			spinner.succeed('Step 2')
-		}, 3000)
-	}, 2000)
+program.command('run').action(async () => {
+	const options = program.opts();
+
+	// parser setup
+	const parser = new Parser()
+	parser.setLanguage(RSQUIRREL)
+
+	const spinner = ora()
+
+	// TODO: load given file
+	spinner.start(`reading file ${"FILE"}`)
+	const source = fs.readFileSync("./nuts/test.nut", "utf8");
+	spinner.succeed(`read file ${"FILE"}`)
+
+	const tree = parser.parse(source)
+
+	const treeString = tree.rootNode.toString()
+
+	if (tree.rootNode.hasError()) {
+		spinner.fail(treeString)
+	} else {
+		spinner.succeed(treeString)
+	}
 })
 
 program.parse(process.argv)
